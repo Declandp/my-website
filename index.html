@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declan Rhys Dkharphanbuh | Data Analyst</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --text-secondary: #636588;
+            --card-bg: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-accent: #eff1fc;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(239, 241, 252, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url('/api/placeholder/1600/900') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            top: 20%;
+            right: 10%;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(247, 37, 133, 0.05);
+            border-radius: 50%;
+            bottom: 15%;
+            left: 5%;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            color: var(--text-color);
+        }
+        
+        .hero-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: rgba(247, 37, 133, 0.1);
+            border-radius: 30px;
+        }
+        
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 7rem 10%;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+        
+        .section-head {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            transition: width 0.3s;
+            z-index: -1;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+        
+        .skill-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        
+        .skill-list li::before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-right: 0.5em;
+        }
+        
+        /* Experience Section */
+        .experience-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .experience-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .experience-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 5px;
+            height: calc(100% + 3rem);
+            background: linear-gradient(to bottom, var(--primary-color), rgba(67, 97, 238, 0.1));
+            z-index: -1;
+        }
+        
+        .experience-card:last-child::after {
+            display: none;
+        }
+        
+        .experience-date {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .experience-desc {
+            list-style-type: none;
+        }
+        
+        .experience-desc li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-desc li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-details {
+            padding: 2rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding-right: 5px;
+        }
+        
+        /* Education and Certification Section */
+        .education-cert-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .education-cert-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(225deg, rgba(67, 97, 238, 0.1), transparent);
+            border-radius: 0 0 0 100%;
+            z-index: 0;
+        }
+        
+        .education-cert-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .education-cert-date {
+            display: inline-block;
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .education-cert-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .education-cert-institution {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .education-cert-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .education-cert-link:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(247, 37, 133, 0.05);
+            border-radius: 50%;
+            top: -150px;
+            right: -100px;
+        }
+        
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 50%;
+            bottom: -100px;
+            left: 10%;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .contact-info {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .section {
+                padding: 5rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .experience-card::before {
+                left: -10px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-btn {
+                padding: 0.8rem 2rem;
+            }
+            
+            .projects-container,
+            .education-cert-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">Declan.R</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-title">Business Analyst / Data Analyst</div>
+            <h1>Declan Rhys <span style="color: var(--accent-color);">Dkharphanbuh</span></h1>
+            <p>Results-driven Data Analyst with a strong background in transforming complex datasets into actionable business insights. Skilled in data visualization, statistical analysis, and leveraging tools such as SQL, Python, and Advanced Excel to support data-driven decision-making.</p>
+            <a href="#contact" class="cta-btn">Get in Touch</a>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-head">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">I specialize in transforming raw data into meaningful insights using these tools and technologies</p>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3 class="skill-title">Data Analysis</h3>
+                <ul class="skill-list">
+                    <li>Advanced Excel: Pivot Tables</li>
+                    <li>Power Query &amp; VLOOKUP</li>
+                    <li>Macros &amp; Automation</li>
+                    <li>Statistical Analysis</li>
+                    <li>Data Cleaning &amp; QA</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3 class="skill-title">Visualization</h3>
+                <ul class="skill-list">
+                    <li>Tableau</li>
+                    <li>Power BI</li>
+                    <li>Matplotlib</li>
+                    <li>Seaborn</li>
+                    <li>Dashboard Creation</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3 class="skill-title">Programming</h3>
+                <ul class="skill-list">
+                    <li>SQL: MYSQL</li>
+                    <li>MS SQL Server</li>
+                    <li>Python Libraries: Pandas</li>
+                    <li>NumPy &amp; Data Processing</li>
+                    <li>ETL Pipelines</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3 class="skill-title">Cloud &amp; Tools</h3>
+                <ul class="skill-list">
+                    <li>Snowflake</li>
+                    <li>Spotlight (Lexalytics)</li>
+                    <li>ETAB Enterprise</li>
+                    <li>NLP &amp; Text Analysis</li>
+                    <li>Data Warehousing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="section-head">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">My professional journey and key responsibilities</p>
+        </div>
+        
+        <div class="experience-container">
+            <div class="experience-card">
+                <div class="experience-date">October 2023 - Present</div>
+                <h3 class="experience-title">Data Analyst</h3>
+                <div class="experience-company">Futurlytic Pvt. Ltd., Bangalore</div>
+                <ul class="experience-desc">
+                    <li>Managed daily, weekly, monthly, and ad-hoc tasks for data population, verification, and analysis, ensuring the highest levels of data quality and accuracy across processes.</li>
+                    <li>Utilized Spotlight (Lexalytics) for Natural Language Processing (NLP) to analyse text, creating and optimizing configurations with boolean queries, resulting in 95%+ categorization accuracy.</li>
+                    <li>Developed interactive dashboards and visualizations using Spotlight and Tableau to present data-driven insights to key stakeholders.</li>
+                    <li>Performed regular data consistency checks to ensure updates matched eSaaS platform data.</li>
+                    <li>Automated reporting processes with ETAB Enterprise, streamlining Excel and PowerPoint reports.</li>
+                    <li>Conducted complex data queries and data extraction from SQL databases.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-card">
+                <div class="experience-date">January 2021 - June 2023</div>
+                <h3 class="experience-title">Entrepreneur</h3>
+                <div class="experience-company">Self-Employed, Shillong</div>
+                <ul class="experience-desc">
+                    <li>Founded and managed a farming (Poultry and Mushroom) business with 2 employees.</li>
+                    <li>Conducted regular price analysis of poultry products and market trends to inform future planning and to optimize nutrition and cost-efficiency.</li>
+                    <li>Utilized data analysis for metrics tracking, batch planning, aligning production with demand to enhance operational efficiency.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-head">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Some of my recent data analysis and visualization work</p>
+        </div>
+        
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-img-container">
+                    <img src="/api/placeholder/400/220" alt="Tableau Dashboards" class="project-img">
+                    <div class="project-category">Visualization</div>
+                </div>
+                <div class="project-details">
+                    <h3 class="project-title">Tableau Dashboards</h3>
+                    <p class="project-desc">Created interactive Tableau dashboards for Regional Sales, Market Survey, and Telangana Growth Analysis. Leveraged LOD expressions, parameters, sets, and filters to extract actionable insights.</p>
+                    <a href="https://public.tableau.com/app/profile/declan.dkharphanbuh" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img-container">
+                    <img src="/api/placeholder/400/220" alt="Data Warehouse Project" class="project-img">
+                    <div class="project-category">SQL &amp; ETL</div>
+                </div>
+                <div class="project-details">
+                    <h3 class="project-title">Data Warehouse Project</h3>
+                    <p class="project-desc">Engineered a scalable data warehouse solution using SQL Server with Medallion architecture. Developed robust ETL pipelines and implemented star schema data models optimized for analytical querying.</p>
+                    <a href="https://github.com/Declandp/SQL-Data-Warehouse-Project" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img-container">
+                    <img src="/api/placeholder/400/220" alt="Marketing A/B Testing" class="project-img">
+                    <div class="project-category">Python Analysis</div>
+                </div>
+                <div class="project-details">
+                    <h3 class="project-title">Marketing A/B Testing</h3>
+                    <p class="project-desc">Analyzed marketing campaign data to assess advertisement effectiveness. Used statistical tools including Z and T tests with Bootstrap resampling to prove that advertisements achieved 2.55% conversion vs 1.79% for PSAs.</p>
+                    <a href="https://github.com/Declandp/A-BTesting" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education and Certification Section -->
+    <section class="section" id="education">
+        <div class="section-head">
+            <h2 class="section-title">Education &amp; Certifications</h2>
+            <p class="section-subtitle">My academic background and professional development</p>
+        </div>
+        
+        <div class="education-cert-container">
+            <div class="education-cert-card">
+                <div class="education-cert-date">2017 - 2020</div>
+                <h3 class="education-cert-title">B.Sc. (Hons) Statistics</h3>
+                <div class="education-cert-institution">University of Delhi</div>
+                <p>CGPA: 7.108</p>
+            </div>
+            
+            <div class="education-cert-card">
+                <div class="education-cert-date">Certification</div>
+                <h3 class="education-cert-title">Google Data Analytics Specialization</h3>
+                <div class="education-cert-institution">Coursera</div>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/SYJBSUX926VD" target="_blank" class="education-cert-link">View Certificate →</a>
+            </div>
+            
+            <div class="education-cert-card">
+                <div class="education-cert-date">Certification</div>
+                <h3 class="education-cert-title">SQL Beginner to Advanced</h
